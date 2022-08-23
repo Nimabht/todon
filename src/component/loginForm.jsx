@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
-import Input from "./component/common/input";
+import Input from "./common/input";
 import axios from "axios";
+import { userValid } from "../utilies/userValid";
+import { Link } from "react-router-dom";
 class LoginForm extends Component {
-  state = { data: { username: "", password: "" }, errors: {} };
+  state = { users: [], data: {}, errors: {} };
+
+  async componentDidMount() {
+    const { data: users } = await axios.get("http://localhost:3000/users");
+    this.setState({ users });
+  }
 
   schema = {
-    username: Joi.string().min(4).max(30).required().label("Username"),
-    password: Joi.string().required().min(8).label("Password"),
+    username: Joi.string().required().label("Username"),
+    password: Joi.string().required().label("Password"),
   };
   validateProperty = (input) => {
     const obj = { [input.name]: input.value };
@@ -29,10 +36,8 @@ class LoginForm extends Component {
   };
 
   doSubmit = async () => {
-    const newAcc = { ...this.state.data };
-    await axios.post("http://localhost:3000/users", newAcc);
-    console.log("submitted");
-    this.props.history.push("/dashboard");
+    console.log("Log in submitted");
+    this.props.history.push(`/dashboard/${this.state.data.username}`);
   };
 
   handleSubmit = (event) => {
@@ -41,7 +46,7 @@ class LoginForm extends Component {
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
-    this.doSubmit();
+    if (userValid(this.state.data, this.state.users)) this.doSubmit();
   };
 
   handleChange = (event) => {
@@ -83,6 +88,13 @@ class LoginForm extends Component {
             Login
           </button>
         </form>
+        <Link
+          to="/sign-in"
+          style={{ right: "39rem" }}
+          className="fixed bottom-32 hover:text-cyan-600 duration-300"
+        >
+          don't have any account?
+        </Link>
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { MdFactCheck } from "react-icons/md";
+import { MdFactCheck, MdDashboard } from "react-icons/md";
 import { BiLogIn, BiShoppingBag, BiInfoCircle } from "react-icons/bi";
+import { GoSignIn } from "react-icons/go";
 import "../App.css";
 class NavBar extends Component {
   render() {
@@ -18,12 +19,30 @@ class NavBar extends Component {
             </span>
           </NavLink>
           <NavLink
+            className="hover-underline-animation mt-6 flex items-center"
+            to="/dashboard"
+          >
+            <MdDashboard className="MdFactCheck" />
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+              Dashboard
+            </span>
+          </NavLink>
+          <NavLink
             className="hover-underline-animation mt-2 flex items-center"
             to="/login"
           >
             <BiLogIn className="MdFactCheck" />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              login
+              Login
+            </span>
+          </NavLink>
+          <NavLink
+            className="hover-underline-animation mt-2 flex items-center"
+            to="/sign-in"
+          >
+            <GoSignIn className="MdFactCheck" />
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+              Sign in
             </span>
           </NavLink>
           <NavLink
