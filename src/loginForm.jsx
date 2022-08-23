@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./component/common/input";
+import axios from "axios";
 class LoginForm extends Component {
   state = { data: { username: "", password: "" }, errors: {} };
 
@@ -8,7 +9,6 @@ class LoginForm extends Component {
     username: Joi.string().min(4).max(30).required().label("Username"),
     password: Joi.string().required().min(8).label("Password"),
   };
-
   validateProperty = (input) => {
     const obj = { [input.name]: input.value };
     const schema = { [input.name]: this.schema[input.name] };
@@ -28,9 +28,11 @@ class LoginForm extends Component {
     }
   };
 
-  doSubmit = () => {
-    //calling db and posting new user :)
+  doSubmit = async () => {
+    const newAcc = { ...this.state.data };
+    await axios.post("http://localhost:3000/users", newAcc);
     console.log("submitted");
+    this.props.history.push("/dashboard");
   };
 
   handleSubmit = (event) => {
@@ -48,7 +50,6 @@ class LoginForm extends Component {
     if (errorMessage) errors[event.currentTarget.name] = errorMessage;
     else delete errors[event.currentTarget.name];
     const data = { ...this.state.data };
-    console.log(event.currentTarget.value);
     data[event.currentTarget.name] = event.currentTarget.value;
     this.setState({ data, errors });
   };
