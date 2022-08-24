@@ -2,7 +2,7 @@ import React, { Component } from "react";
 class Input extends Component {
   render() {
     return (
-      <div className="mb-5 w-56 flex flex-col gap-y-2">
+      <div className="mb-2 w-56 flex flex-col gap-y-2">
         <label htmlFor={this.props.name}>{this.props.label}:</label>
         <input
           name={this.props.name}

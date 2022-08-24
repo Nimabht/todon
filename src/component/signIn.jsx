@@ -57,12 +57,12 @@ class SignIn extends Component {
   render() {
     return (
       <div
-        style={{ height: "30rem" }}
-        className="bg-slate-200 m-auto mt-44 p-10 gap-y-9 w-96 flex flex-col font-semibold rounded-3xl items-center"
+        style={{ height: "34rem" }}
+        className="bg-slate-200 m-auto mt-36 p-10 gap-y-12 w-96 flex flex-col font-semibold rounded-3xl items-center"
       >
         <h1 className="text-5xl	">Welcome 😊</h1>
         <form
-          className="flex flex-col items-center	"
+          className="flex flex-col items-center gap-y-5	"
           onSubmit={this.handleSubmit}
         >
           <Input
@@ -79,7 +79,7 @@ class SignIn extends Component {
             name="password"
             label="Password"
           />
-          <button className="fixed bottom-40 mt-12 bg-cyan-400 rounded-3xl hover:bg-cyan-500 hover:shadow-xl duration-300 w-32 p-3">
+          <button className="mt-3 bg-cyan-400 rounded-3xl hover:bg-cyan-500 hover:shadow-xl duration-300 w-32 p-3">
             Sign In
           </button>
         </form>
