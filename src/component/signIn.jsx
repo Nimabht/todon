@@ -3,11 +3,12 @@ import Joi from "joi-browser";
 import Input from "./common/input";
 import axios from "axios";
 class SignIn extends Component {
-  state = { data: { username: "", password: "" }, errors: {} };
+  state = { data: { username: "", password: "", tasks: "" }, errors: {} };
 
   schema = {
     username: Joi.string().min(4).max(30).required().label("Username"),
     password: Joi.string().required().min(8).label("Password"),
+    tasks: Joi.any(),
   };
   validateProperty = (input) => {
     const obj = { [input.name]: input.value };
@@ -29,7 +30,7 @@ class SignIn extends Component {
   };
 
   doSubmit = async () => {
-    const newAcc = { ...this.state.data };
+    const newAcc = { ...this.state.data, tasks: [] };
     await axios.post("http://localhost:3000/users", newAcc);
     console.log("signin submitted");
     this.props.history.push("/login");

@@ -1,14 +1,19 @@
 import React, { Component } from "react";
+import CheckButton from "./check";
+
 class Task extends Component {
-  state = {
-    title: "Title",
-    describe:
-      "doing some shit and after that lest fuck and do something fun too 💀",
-  };
   render() {
     return (
-      <div className="shadow-xl items-center flex self-start bg-teal-100 w-10/12 h-1/4 ml-14 rounded-2xl	 mt-10">
-        <h1 className="p-2 ">{this.state.title}</h1>
+      <div className="shadow-xl items-center flex self-start bg-teal-100 w-10/12 h-1/4 ml-20 rounded-2xl gap-x-12 mt-10">
+        <h1 className="p-2 text-3xl ml-9">{this.props.title}</h1>
+        <p className={this.props.task.status ? "w-3/5 line-through" : "w-3/5"}>
+          {this.props.description}
+        </p>
+
+        <CheckButton
+          status={this.props.task.status}
+          onClick={() => this.props.onStatus(this.props.task)}
+        />
       </div>
     );
   }

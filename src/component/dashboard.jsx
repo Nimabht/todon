@@ -1,14 +1,36 @@
 import React, { Component } from "react";
 import { MdAdd } from "react-icons/md";
 import SearchField from "./common/searchField";
-import Task from "./common/task";
+import TaskTable from "./taskTable";
+import axios from "axios";
 class DashBoard extends Component {
-  state = { user: {}, searchValue: "" };
+  state = {
+    user: {
+      id: 0,
+      username: "",
+      password: "",
+      tasks: [],
+    },
+    searchValue: "",
+  };
+  async componentDidMount() {
+    const { data: users } = await axios.get("http://localhost:3000/users");
+    const user = users.find(
+      (user) => user.username === this.props.match.params.username
+    );
+    this.setState({ user });
+  }
   handleChange = (e) => {
     let searchValue = this.state.searchValue;
     searchValue = e.currentTarget.value;
     console.log(searchValue);
     this.setState({ searchValue });
+  };
+  handleStatusChange = (task) => {
+    const user = { ...this.state.user };
+    const index = user.tasks.indexOf(task);
+    user.tasks[index].status = !user.tasks[index].status;
+    this.setState({ user });
   };
   render() {
     return (
@@ -26,15 +48,10 @@ class DashBoard extends Component {
             onChange={this.handleChange}
           />
         </div>
-        <div className=" overflow-auto h-full w-[96%]">
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-        </div>
+        <TaskTable
+          onStatus={this.handleStatusChange}
+          tasks={this.state.user.tasks}
+        />
       </div>
     );
   }
