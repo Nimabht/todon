@@ -3,6 +3,8 @@ import { MdAdd } from "react-icons/md";
 import SearchField from "./common/searchField";
 import TaskTable from "./taskTable";
 import axios from "axios";
+import TaskForm from "./common/taskForm";
+
 class DashBoard extends Component {
   state = {
     user: {
@@ -13,6 +15,7 @@ class DashBoard extends Component {
     },
     searchValue: "",
   };
+
   async componentDidMount() {
     const { data: users } = await axios.get("http://localhost:3000/users");
     const user = users.find(
@@ -26,33 +29,52 @@ class DashBoard extends Component {
     console.log(searchValue);
     this.setState({ searchValue });
   };
-  handleStatusChange = (task) => {
+  handleStatusChange = async (task) => {
     const user = { ...this.state.user };
     const index = user.tasks.indexOf(task);
     user.tasks[index].status = !user.tasks[index].status;
+    axios.put(`http://localhost:3000/users/${user.id}`, user);
+    this.setState({ user });
+  };
+  handleFavoriteChange = async (task) => {
+    const user = { ...this.state.user };
+    const index = user.tasks.indexOf(task);
+    user.tasks[index].favorite = !user.tasks[index].favorite;
+    axios.put(`http://localhost:3000/users/${user.id}`, user);
+    this.setState({ user });
+  };
+  handleDelete = (task) => {
+    const user = { ...this.state.user };
+    user.tasks = user.tasks.filter((t) => t !== task);
+    axios.put(`http://localhost:3000/users/${user.id}`, user);
     this.setState({ user });
   };
   render() {
     return (
-      <div className="flex flex-col font-semibold m-auto mt-20 rounded-xl container bg-slate-100 h-5/6 w-11/12 items-center	">
-        <h1 className="mt-3 w-[96%] text-4xl text-cyan-600 border-b border-slate-300 p-2 w-11/12">
-          {this.props.match.params.username}
-        </h1>
-        <div className="self-start mt-3 ml-12 flex gap-x-7">
-          <button className="text-xl text-blue-700 inline">
-            <MdAdd className="text-3xl text-blue-700 inline" />
-            Add
-          </button>
-          <SearchField
-            value={this.state.searchValue}
-            onChange={this.handleChange}
+      <React.Fragment>
+        <TaskForm trigger={false} />
+        <div className="flex flex-col font-semibold m-auto mt-20 rounded-xl container bg-slate-100 h-5/6 w-11/12 items-center	">
+          <h1 className="mt-3 w-[96%] text-4xl text-cyan-600 border-b border-slate-300 p-2 w-11/12">
+            {this.props.match.params.username}
+          </h1>
+          <div className="self-start mt-3 ml-12 flex gap-x-7">
+            <button className="text-xl text-blue-700 inline">
+              <MdAdd className="text-3xl text-blue-700 inline" />
+              Add
+            </button>
+            <SearchField
+              value={this.state.searchValue}
+              onChange={this.handleChange}
+            />
+          </div>
+          <TaskTable
+            onStatus={this.handleStatusChange}
+            onFavorite={this.handleFavoriteChange}
+            onDelete={this.handleDelete}
+            tasks={this.state.user.tasks}
           />
         </div>
-        <TaskTable
-          onStatus={this.handleStatusChange}
-          tasks={this.state.user.tasks}
-        />
-      </div>
+      </React.Fragment>
     );
   }
 }

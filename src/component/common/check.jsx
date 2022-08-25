@@ -2,8 +2,11 @@ import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
 import React, { Component } from "react";
 class CheckButton extends Component {
   renderIcon = () => {
-    if (this.props.status) return <BsCheckCircleFill />;
-    return <BsCheckCircle />;
+    if (this.props.status)
+      return (
+        <BsCheckCircleFill className="duration-100 hover:drop-shadow-check" />
+      );
+    return <BsCheckCircle className=" duration-100 hover:drop-shadow-check" />;
   };
   render() {
     return (

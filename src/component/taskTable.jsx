@@ -12,6 +12,8 @@ class TaskTable extends Component {
             title={task.title}
             description={task.description}
             onStatus={this.props.onStatus}
+            onDelete={this.props.onDelete}
+            onFavorite={this.props.onFavorite}
           />
         ))}
       </div>
