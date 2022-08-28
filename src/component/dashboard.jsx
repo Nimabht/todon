@@ -4,7 +4,7 @@ import SearchField from "./common/searchField";
 import TaskTable from "./taskTable";
 import axios from "axios";
 import TaskForm from "./common/taskForm";
-
+import { search } from "../utilies/searching";
 class DashBoard extends Component {
   state = {
     user: {
@@ -15,6 +15,7 @@ class DashBoard extends Component {
     },
     searchValue: "",
     buttonPopup: false,
+    popupPosition: "",
   };
 
   async componentDidMount() {
@@ -50,21 +51,31 @@ class DashBoard extends Component {
     axios.put(`http://localhost:3000/users/${user.id}`, user);
     this.setState({ user });
   };
-  handlePopup = () => {
+  handlePopup = (task) => {
     let buttonPopup = this.state.buttonPopup;
     buttonPopup = !buttonPopup;
-    this.setState({ buttonPopup });
+    const popupPosition = task;
+    this.setState({ buttonPopup, popupPosition });
+  };
+  getTaskData = () => {
+    const filtered =
+      this.state.searchValue !== ""
+        ? search(this.state.user.tasks, this.state.searchValue)
+        : this.state.user.tasks;
+
+    return { data: filtered };
   };
   render() {
+    const { data: filtered } = this.getTaskData();
     return (
       <React.Fragment>
         <TaskForm
           user={this.state.user}
-          position={"new"}
           trigger={this.state.buttonPopup}
           onPopup={() => this.handlePopup()}
+          position={this.state.popupPosition}
         />
-        <div className="flex flex-col font-semibold m-auto mt-20 rounded-xl container bg-slate-100 h-5/6 w-11/12 items-center	">
+        <div className=" p-1 flex flex-col font-semibold m-auto mt-20 rounded-xl container bg-slate-100 h-5/6 w-11/12 items-center	">
           <h1 className="mt-3 w-[96%] text-4xl text-cyan-600 border-b border-slate-300 p-2 w-11/12">
             {this.props.match.params.username}
           </h1>
@@ -85,7 +96,9 @@ class DashBoard extends Component {
             onStatus={this.handleStatusChange}
             onFavorite={this.handleFavoriteChange}
             onDelete={this.handleDelete}
-            tasks={this.state.user.tasks}
+            tasks={filtered}
+            trigger={this.state.buttonPopup}
+            onPopup={this.handlePopup}
           />
         </div>
       </React.Fragment>

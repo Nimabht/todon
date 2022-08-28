@@ -13,7 +13,7 @@ const TextArea = (props) => {
         value={props.value}
         name={props.name}
         id={props.name}
-        maxlength={props.maxLength}
+        maxLength={props.maxLength}
         cols="40"
         rows="4"
       ></textarea>
