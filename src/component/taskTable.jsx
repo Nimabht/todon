@@ -7,6 +7,7 @@ class TaskTable extends Component {
       <div className="flex flex-col gap-y-12 overflow-auto h-full w-[96%] mt-5 ml-14">
         {this.props.tasks.map((task) => (
           <Task
+            id={this.props.id}
             onPopup={() => this.props.onPopup(task)}
             task={task}
             key={task.title}

@@ -33,7 +33,7 @@ class Task extends Component {
             />
           </span>
         </div>
-        <EditButton onClick={this.props.onPopup} />
+        <EditButton task={this.props.task} id={this.props.id} />
       </div>
     );
   }

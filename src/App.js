@@ -8,7 +8,7 @@ import Home from "./component/home";
 import AboutMe from "./component/aboutMe";
 import SignIn from "./component/signIn";
 import DashBoard from "./component/dashboard";
-import Shop from "./component/shop";
+import EditForm from "./component/common/editForm";
 function App() {
   return (
     <div className="flex relative svg-background">
@@ -17,8 +17,8 @@ function App() {
         <Switch>
           <Route path="/login" component={LoginForm} />
           <Route path="/sign-in" component={SignIn} />
+          <Route path="/dashboard/:username/:title" component={EditForm} />
           <Route path="/dashboard/:username" component={DashBoard} />
-          <Route path="/dashboard/:username" component={Shop} />
           <Route path="/about-me" component={AboutMe} />
           <Route path="/home" component={Home} />
           <Route path="/error404" component={NotFound} />

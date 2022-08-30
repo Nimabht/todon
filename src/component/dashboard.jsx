@@ -5,6 +5,7 @@ import TaskTable from "./taskTable";
 import axios from "axios";
 import TaskForm from "./common/taskForm";
 import { search } from "../utilies/searching";
+
 class DashBoard extends Component {
   state = {
     user: {
@@ -25,7 +26,7 @@ class DashBoard extends Component {
     );
     this.setState({ user });
   }
-  handleChange = (e) => {
+  handleSearch = (e) => {
     let searchValue = this.state.searchValue;
     searchValue = e.currentTarget.value;
     console.log(searchValue);
@@ -75,6 +76,7 @@ class DashBoard extends Component {
           onPopup={() => this.handlePopup()}
           position={this.state.popupPosition}
         />
+
         <div className=" p-1 flex flex-col font-semibold m-auto mt-20 rounded-xl container bg-slate-100 h-5/6 w-11/12 items-center	">
           <h1 className="mt-3 w-[96%] text-4xl text-cyan-600 border-b border-slate-300 p-2 w-11/12">
             {this.props.match.params.username}
@@ -89,10 +91,11 @@ class DashBoard extends Component {
             </button>
             <SearchField
               value={this.state.searchValue}
-              onChange={this.handleChange}
+              onChange={this.handleSearch}
             />
           </div>
           <TaskTable
+            id={this.state.user.id}
             onStatus={this.handleStatusChange}
             onFavorite={this.handleFavoriteChange}
             onDelete={this.handleDelete}

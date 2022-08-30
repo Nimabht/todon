@@ -17,6 +17,7 @@ const TextArea = (props) => {
         cols="40"
         rows="4"
       ></textarea>
+      {props.error && <p className="text-xs text-red-600	">{props.error}</p>}
     </div>
   );
 };
