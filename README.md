@@ -6,6 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npx json-server --watch db.json`
+
+Runs local host for users of localhost:3000/users
+***You must run this script firts then starting the app***
+
 ### `npm start`
 
 Runs the app in the development mode.\
