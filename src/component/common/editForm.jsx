@@ -4,6 +4,7 @@ import axios from "axios";
 import Joi from "joi-browser";
 import TextArea from "./textArea";
 import "../../App.css";
+import { toast } from "react-toastify";
 class EditForm extends Component {
   state = {
     data: { title: "", description: "", favorite: false, status: false },
@@ -40,6 +41,15 @@ class EditForm extends Component {
     await axios.put(`http://localhost:3000/users/${user.id}`, user);
     console.log("task edited");
     this.props.history.push(`/dashboard/${this.props.match.params.username}`);
+    toast.info("Task edited!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   handleSubmit = (event) => {

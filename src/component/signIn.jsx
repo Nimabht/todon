@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./common/input";
 import axios from "axios";
+import { toast } from "react-toastify";
 class SignIn extends Component {
   state = { data: { username: "", password: "", tasks: "" }, errors: {} };
 
@@ -34,6 +35,15 @@ class SignIn extends Component {
     await axios.post("http://localhost:3000/users", newAcc);
     console.log("signin submitted");
     this.props.history.push("/login");
+    toast.success("Sign in Successful 🤩", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   handleSubmit = (event) => {
@@ -41,7 +51,18 @@ class SignIn extends Component {
     event.preventDefault();
     const errors = this.validate();
     this.setState({ errors: errors || {} });
-    if (errors) return;
+    if (errors) {
+      toast.error("Sign in Failed 😥", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     this.doSubmit();
   };
 

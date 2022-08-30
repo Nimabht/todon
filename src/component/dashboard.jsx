@@ -5,7 +5,7 @@ import TaskTable from "./taskTable";
 import axios from "axios";
 import TaskForm from "./common/taskForm";
 import { search } from "../utilies/searching";
-
+import { toast } from "react-toastify";
 class DashBoard extends Component {
   state = {
     user: {
@@ -32,12 +32,35 @@ class DashBoard extends Component {
     console.log(searchValue);
     this.setState({ searchValue });
   };
+  renderStatusNotif = (status) => {
+    if (status) {
+      return toast("Wow GOOD JOB!! 👍🏻", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    return toast("Try Harder :(", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   handleStatusChange = async (task) => {
     const user = { ...this.state.user };
     const index = user.tasks.indexOf(task);
     user.tasks[index].status = !user.tasks[index].status;
     axios.put(`http://localhost:3000/users/${user.id}`, user);
     this.setState({ user });
+    this.renderStatusNotif(user.tasks[index].status);
   };
   handleFavoriteChange = async (task) => {
     const user = { ...this.state.user };
@@ -45,12 +68,30 @@ class DashBoard extends Component {
     user.tasks[index].favorite = !user.tasks[index].favorite;
     axios.put(`http://localhost:3000/users/${user.id}`, user);
     this.setState({ user });
+    toast("Added to favorites! ⭐", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   handleDelete = async (task) => {
     const user = { ...this.state.user };
     user.tasks = user.tasks.filter((t) => t !== task);
     axios.put(`http://localhost:3000/users/${user.id}`, user);
     this.setState({ user });
+    toast.error("Task deleted!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   handlePopup = (task) => {
     let buttonPopup = this.state.buttonPopup;
@@ -94,6 +135,9 @@ class DashBoard extends Component {
               onChange={this.handleSearch}
             />
           </div>
+          {this.state.user.tasks.length === 0 && (
+            <h1 className="text-6xl text-gray-400 p-[11rem]">Add new Task !</h1>
+          )}
           <TaskTable
             id={this.state.user.id}
             onStatus={this.handleStatusChange}

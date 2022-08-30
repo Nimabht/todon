@@ -9,11 +9,24 @@ import AboutMe from "./component/aboutMe";
 import SignIn from "./component/signIn";
 import DashBoard from "./component/dashboard";
 import EditForm from "./component/common/editForm";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <div className="flex relative svg-background">
       <NavBar />
       <div className="container w-11/12 h-screen">
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <Switch>
           <Route path="/login" component={LoginForm} />
           <Route path="/sign-in" component={SignIn} />

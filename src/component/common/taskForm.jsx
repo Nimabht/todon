@@ -4,6 +4,7 @@ import axios from "axios";
 import Joi from "joi-browser";
 import TextArea from "./textArea";
 import "../../App.css";
+import { toast } from "react-toastify";
 class TaskForm extends Component {
   state = {
     data: { title: "", description: "", favorite: false, status: false },
@@ -23,7 +24,15 @@ class TaskForm extends Component {
     axios.put(`http://localhost:3000/users/${user.id}`, user);
     const data = { title: "", description: "", favorite: false, status: false };
     this.setState({ data });
-    console.log("Task added");
+    toast.info("Task added!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     this.props.onPopup();
   };
 

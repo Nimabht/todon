@@ -4,6 +4,7 @@ import Input from "./common/input";
 import axios from "axios";
 import { userValid } from "../utilies/userValid";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 class LoginForm extends Component {
   state = { users: [], data: {}, errors: {} };
 
@@ -38,6 +39,15 @@ class LoginForm extends Component {
   doSubmit = async () => {
     console.log("Log in submitted");
     this.props.history.push(`/dashboard/${this.state.data.username}`);
+    toast.success(`Welcome ${this.state.data.username}`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   handleSubmit = (event) => {
@@ -45,7 +55,18 @@ class LoginForm extends Component {
     event.preventDefault();
     const errors = this.validate();
     this.setState({ errors: errors || {} });
-    if (errors) return;
+    if (errors) {
+      toast.error("Log in Failed 😥", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     if (userValid(this.state.data, this.state.users)) this.doSubmit();
   };
 
