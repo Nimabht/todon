@@ -11,6 +11,7 @@ import DashBoard from "./component/dashboard";
 import EditForm from "./component/common/editForm";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   return (
     <div className="flex relative svg-background">
