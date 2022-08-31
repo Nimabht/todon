@@ -10,7 +10,10 @@ class CheckButton extends Component {
   };
   render() {
     return (
-      <button className="text-4xl text-green-500" onClick={this.props.onClick}>
+      <button
+        className="text-4xl text-green-500 ml-3"
+        onClick={this.props.onClick}
+      >
         {this.renderIcon()}
       </button>
     );

@@ -5,60 +5,7 @@
       "username": "admin",
       "password": "admin",
       "tasks": [
-        {
-          "title": "dsfsdfsd",
-          "description": "kiry273gyqihufwjoiue8tyhgiebqkjnlciwfpquegthyuiebhjacnslkiafewghuibvkjancslkifewhguibvkjancslaifwueowhgihbkajcnskliawofeuhighfbkajncliwoafehuibkjancsiawufhiekjwndquhfigyebakjwudoqh",
-          "favorite": false,
-          "status": true
-        },
-        {
-          "title": "dasdasdas",
-          "description": "dasdasdasdsadsa",
-          "favorite": false,
-          "status": false
-        },
-        {
-          "title": "asdasdas",
-          "description": "dasdasdasd",
-          "favorite": false,
-          "status": false
-        },
-        {
-          "title": "sadasd",
-          "description": "asdasdasd",
-          "favorite": false,
-          "status": false
-        },
-        {
-          "title": "sadasdas",
-          "description": "dasdasd",
-          "favorite": false,
-          "status": false
-        },
-        {
-          "title": "nima",
-          "description": "nimadsadsaddsad",
-          "favorite": false,
-          "status": false
-        },
-        {
-          "title": "nedsadsadsa",
-          "description": "new task :)ahadsadasdasdasdas",
-          "favorite": false,
-          "status": false
-        },
-        {
-          "title": "title4",
-          "description": "description4",
-          "favorite": true,
-          "status": false
-        },
-        {
-          "title": "title5",
-          "description": "description5s",
-          "favorite": false,
-          "status": false
-        }
+       
       ]
     },
     {

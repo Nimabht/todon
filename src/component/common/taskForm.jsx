@@ -7,7 +7,13 @@ import "../../App.css";
 import { toast } from "react-toastify";
 class TaskForm extends Component {
   state = {
-    data: { title: "", description: "", favorite: false, status: false },
+    data: {
+      title: "",
+      description: "",
+      favorite: false,
+      status: false,
+      date: new Date(),
+    },
     errors: {},
   };
 
@@ -16,13 +22,20 @@ class TaskForm extends Component {
     description: Joi.string().required().label("Description"),
     favorite: Joi.any(),
     status: Joi.any(),
+    date: Joi.any(),
   };
 
   doSubmit = async () => {
     const user = { ...this.props.user };
     user.tasks.unshift(this.state.data);
     axios.put(`http://localhost:3000/users/${user.id}`, user);
-    const data = { title: "", description: "", favorite: false, status: false };
+    const data = {
+      title: "",
+      description: "",
+      favorite: false,
+      status: false,
+      date: new Date(),
+    };
     this.setState({ data });
     toast.info("Task added!", {
       position: "top-center",
