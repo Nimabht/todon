@@ -24,7 +24,8 @@ class DashBoard extends Component {
     const user = users.find(
       (user) => user.username === this.props.match.params.username
     );
-    this.setState({ user });
+    if (user === undefined) this.props.history.push(`/error404`);
+    else this.setState({ user });
   }
   handleSearch = (e) => {
     let searchValue = this.state.searchValue;
