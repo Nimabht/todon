@@ -1,10 +1,11 @@
 import { Component } from "react";
 import Task from "./common/task";
+import "../App.css";
 class TaskTable extends Component {
   state = {};
   render() {
     return (
-      <div className="flex flex-col gap-y-12 overflow-auto h-full w-[96%] mt-5 ml-14">
+      <div className="flex flex-col gap-y-12 overflow-auto h-full w-[96%] mt-5 ml-9">
         {this.props.tasks.map((task) => (
           <Task
             id={this.props.id}

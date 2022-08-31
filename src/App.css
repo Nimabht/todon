@@ -212,3 +212,21 @@ body {
     height: 86px;
   }
 }
+
+
+/*scroll bar style*/
+::-webkit-scrollbar{
+  width:14px ;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track{
+  background-color: rgb(197, 197, 197);
+  border-radius: 10px;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border: 3px solid rgb(197, 197, 197);
+  background: rgb(79, 236, 255);
+    background: linear-gradient(180deg, rgba(79, 236, 255, 1) 0%, rgba(212, 71, 255, 1) 100%);
+}
