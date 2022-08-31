@@ -16,9 +16,9 @@ function App() {
   return (
     <div className="flex relative svg-background">
       <NavBar />
-      <div className="container w-11/12 h-screen">
+      <div className="container w-11/12 h-screen overflow-hidden">
         <ToastContainer
-          position="top-center"
+          position="top-right"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}

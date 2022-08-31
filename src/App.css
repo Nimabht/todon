@@ -1,3 +1,12 @@
+/*Font*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+p{
+  font-family: 'Open Sans', sans-serif;
+  
+}
+
+
 .App {
   text-align: center;
 }
@@ -229,4 +238,10 @@ body {
   border: 3px solid rgb(197, 197, 197);
   background: rgb(79, 236, 255);
     background: linear-gradient(180deg, rgba(79, 236, 255, 1) 0%, rgba(212, 71, 255, 1) 100%);
+}
+
+
+/*task icon style*/
+.task:hover span{
+  visibility: visible;
 }

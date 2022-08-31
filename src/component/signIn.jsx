@@ -36,7 +36,7 @@ class SignIn extends Component {
     console.log("signin submitted");
     this.props.history.push("/login");
     toast.success("Sign in Successful 🤩", {
-      position: "top-center",
+      position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -53,7 +53,7 @@ class SignIn extends Component {
     this.setState({ errors: errors || {} });
     if (errors) {
       toast.error("Sign in Failed 😥", {
-        position: "top-center",
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

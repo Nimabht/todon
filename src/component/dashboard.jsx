@@ -36,7 +36,7 @@ class DashBoard extends Component {
   renderStatusNotif = (status) => {
     if (status) {
       return toast("Wow GOOD JOB!! 👍🏻", {
-        position: "top-center",
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -46,7 +46,7 @@ class DashBoard extends Component {
       });
     }
     return toast("Try Harder :(", {
-      position: "top-center",
+      position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -70,7 +70,7 @@ class DashBoard extends Component {
     axios.put(`http://localhost:3000/users/${user.id}`, user);
     this.setState({ user });
     toast("Added to favorites! ⭐", {
-      position: "top-center",
+      position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -85,7 +85,7 @@ class DashBoard extends Component {
     axios.put(`http://localhost:3000/users/${user.id}`, user);
     this.setState({ user });
     toast.error("Task deleted!", {
-      position: "top-center",
+      position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -119,7 +119,7 @@ class DashBoard extends Component {
           position={this.state.popupPosition}
         />
 
-        <div className=" p-1 flex flex-col font-semibold m-auto mt-20 rounded-xl container bg-slate-100 h-5/6 w-11/12 items-center	">
+        <div className=" p-1 flex flex-col font-semibold m-auto mt-20 rounded-xl container bg-slate-50 h-5/6 w-11/12 items-center	">
           <h1 className="mt-3 w-[96%] text-4xl text-cyan-600 border-b border-slate-300 p-2 w-11/12">
             {this.props.match.params.username}
           </h1>

@@ -4,7 +4,7 @@ class FavoriteButton extends Component {
   renderIcon = () => {
     if (this.props.favorite)
       return (
-        <HiStar className="text-[2.7rem] duration-100 hover:drop-shadow-favorite" />
+        <HiStar className="text-[2.4rem] duration-100 hover:drop-shadow-favorite" />
       );
     return (
       <HiOutlineStar className="text-[2.4rem] duration-100 hover:drop-shadow-favorite" />

@@ -5,7 +5,7 @@ class TaskTable extends Component {
   state = {};
   render() {
     return (
-      <div className="flex flex-col gap-y-12 overflow-auto h-full w-[96%] mt-5 ml-9">
+      <div className="flex flex-col gap-y-1 overflow-auto h-full w-[96%] mt-5 ml-9">
         {this.props.tasks.map((task) => (
           <Task
             id={this.props.id}

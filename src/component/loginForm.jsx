@@ -40,7 +40,7 @@ class LoginForm extends Component {
     console.log("Log in submitted");
     this.props.history.push(`/dashboard/${this.state.data.username}`);
     toast.success(`Welcome ${this.state.data.username}`, {
-      position: "top-center",
+      position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -57,7 +57,7 @@ class LoginForm extends Component {
     this.setState({ errors: errors || {} });
     if (errors) {
       toast.error("Log in Failed 😥", {
-        position: "top-center",
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
