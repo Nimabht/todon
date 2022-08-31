@@ -55,6 +55,28 @@ class DashBoard extends Component {
       progress: undefined,
     });
   };
+  renderFavoriteNotif = (favorite) => {
+    if (favorite) {
+      return toast("Added to favorites!⭐", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    return toast("Removed from favorites!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   handleStatusChange = async (task) => {
     const user = { ...this.state.user };
     const index = user.tasks.indexOf(task);
@@ -69,15 +91,7 @@ class DashBoard extends Component {
     user.tasks[index].favorite = !user.tasks[index].favorite;
     axios.put(`http://localhost:3000/users/${user.id}`, user);
     this.setState({ user });
-    toast("Added to favorites! ⭐", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    this.renderFavoriteNotif(task.favorite);
   };
   handleDelete = async (task) => {
     const user = { ...this.state.user };
