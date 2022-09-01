@@ -6,6 +6,7 @@ import axios from "axios";
 import TaskForm from "./common/taskForm";
 import { search } from "../utilies/searching";
 import { toast } from "react-toastify";
+import FilterButton from "./common/filter";
 class DashBoard extends Component {
   state = {
     user: {
@@ -13,10 +14,12 @@ class DashBoard extends Component {
       username: "",
       password: "",
       tasks: [],
+      tags: [],
     },
     searchValue: "",
     buttonPopup: false,
     popupPosition: "",
+    selevtedTag: "All",
   };
 
   async componentDidMount() {
@@ -122,6 +125,9 @@ class DashBoard extends Component {
 
     return { data: filtered };
   };
+  handleTagSelect = (tag) => {
+    this.setState({ selectedTag: tag });
+  };
   render() {
     const { data: filtered } = this.getTaskData();
     return (
@@ -137,7 +143,7 @@ class DashBoard extends Component {
           <h1 className="mt-3 w-[96%] text-4xl text-cyan-600 border-b border-slate-300 p-2 w-11/12">
             {this.props.match.params.username}
           </h1>
-          <div className="self-start mt-3 ml-12 flex gap-x-7">
+          <div className="w-[90%] self-start mt-3 ml-12 flex gap-x-7">
             <button
               onClick={this.handlePopup}
               className="text-xl text-blue-700 inline"
@@ -148,6 +154,11 @@ class DashBoard extends Component {
             <SearchField
               value={this.state.searchValue}
               onChange={this.handleSearch}
+            />
+            <FilterButton
+              items={this.state.user.tags}
+              selectedTag={this.state.selectedTag}
+              onItemSelect={this.handleTagSelect}
             />
           </div>
           {this.state.user.tasks.length === 0 && (

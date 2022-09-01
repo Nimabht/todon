@@ -6,7 +6,7 @@ const EditButton = (props) => {
   return (
     <Link
       to={`/dashboard/admin/${props.task.title}`}
-      className="h-fit text-sky-500 text-4xl hover:drop-shadow-edit mr-2"
+      className="font-thin	h-fit text-sky-500 text-4xl hover:drop-shadow-edit mr-2"
     >
       <AiOutlineEdit />
     </Link>

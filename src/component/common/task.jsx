@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EditButton from "../edit";
+import EditButton from "./edit";
 import CheckButton from "./check";
 import DeleteButton from "./delete";
 import FavoriteButton from "./favorite";
@@ -28,7 +28,7 @@ class Task extends Component {
           <span className="font-thin text-lime-700">
             {renderDate(this.props.task.date)}
           </span>
-          <span className="flex gap-x-1 ml-auto	">
+          <span className="flex gap-x-1 ml-auto	invisible">
             <DeleteButton
               onClick={() => this.props.onDelete(this.props.task)}
             />
