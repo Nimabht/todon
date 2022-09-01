@@ -7,7 +7,7 @@ import { renderDate } from "./../../utilies/renderDate";
 class Task extends Component {
   render() {
     return (
-      <div className="m-0 flex  items-center task duration-100	">
+      <div className="m-0 flex  items-center task ">
         <div className="m-0 h-[5rem] h-shadow-xl items-center flex self-start bg-slate-50	w-[98%] rounded-md gap-x-5 overflow-hidden	border-b border-violet-400	">
           <CheckButton
             status={this.props.task.status}
@@ -28,7 +28,7 @@ class Task extends Component {
           <span className="font-thin text-lime-700">
             {renderDate(this.props.task.date)}
           </span>
-          <span className="flex gap-x-1 ml-auto	invisible">
+          <span className="flex gap-x-1 ml-auto	invisible opacity-0	">
             <DeleteButton
               onClick={() => this.props.onDelete(this.props.task)}
             />

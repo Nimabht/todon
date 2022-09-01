@@ -241,6 +241,11 @@ body {
 
 
 /*task icon style*/
+
+.task span{
+  transition: all 0.25s;
+}
 .task:hover span{
   visibility: visible;
+  opacity: 1;
 }
