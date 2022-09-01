@@ -3,7 +3,7 @@ import EditButton from "../edit";
 import CheckButton from "./check";
 import DeleteButton from "./delete";
 import FavoriteButton from "./favorite";
-
+import { renderDate } from "./../../utilies/renderDate";
 class Task extends Component {
   render() {
     return (
@@ -25,6 +25,9 @@ class Task extends Component {
               {this.props.description}
             </p>
           </div>
+          <span className="font-thin text-lime-700">
+            {renderDate(this.props.task.date)}
+          </span>
           <span className="flex gap-x-1 ml-auto	">
             <DeleteButton
               onClick={() => this.props.onDelete(this.props.task)}

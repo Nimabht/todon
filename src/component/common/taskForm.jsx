@@ -12,7 +12,7 @@ class TaskForm extends Component {
       description: "",
       favorite: false,
       status: false,
-      date: new Date(),
+      date: new Date().toString(),
     },
     errors: {},
   };
@@ -34,7 +34,7 @@ class TaskForm extends Component {
       description: "",
       favorite: false,
       status: false,
-      date: new Date(),
+      date: new Date().toString(),
     };
     this.setState({ data });
     toast.info("Task added!", {
