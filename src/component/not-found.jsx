@@ -6,7 +6,7 @@ const NotFound = () => {
       <div className="notfound">
         <div className="notfound-404">
           <h1>
-            4<span className="hover:m-[1rem] transition-all	"></span>4
+            4<span className="hover:m-[1rem] transition-all"></span>4
           </h1>
         </div>
         <h2>Oops! Page Not Be Found</h2>
