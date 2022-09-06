@@ -85,7 +85,7 @@ class TaskForm extends Component {
   };
   render() {
     return this.props.trigger ? (
-      <div className="fixed flex w-full h-screen bg-[#464e55ba] font-semibold">
+      <div className="fixed flex w-full h-screen bg-[#464e55ba] font-semibold z-10">
         <div className="popup-background m-auto	mr-[23rem] self-center bg-purple-100 h-[60%] w-2/3 rounded-xl">
           <form
             onSubmit={this.handleSubmit}

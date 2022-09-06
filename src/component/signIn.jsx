@@ -31,7 +31,11 @@ class SignIn extends Component {
   };
 
   doSubmit = async () => {
-    const newAcc = { ...this.state.data, tasks: [] };
+    const newAcc = {
+      ...this.state.data,
+      tasks: [],
+      tags: ["All", "Favorite", "Today"],
+    };
     await axios.post("http://localhost:3000/users", newAcc);
     console.log("signin submitted");
     this.props.history.push("/login");

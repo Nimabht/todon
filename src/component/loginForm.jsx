@@ -68,6 +68,17 @@ class LoginForm extends Component {
       return;
     }
     if (userValid(this.state.data, this.state.users)) this.doSubmit();
+    else {
+      toast.error("Username or password is incorrect!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   handleChange = (event) => {

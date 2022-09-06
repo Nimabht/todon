@@ -133,22 +133,23 @@ class DashBoard extends Component {
     return (
       <React.Fragment>
         <TaskForm
+          className="z-10"
           user={this.state.user}
           trigger={this.state.buttonPopup}
           onPopup={() => this.handlePopup()}
           position={this.state.popupPosition}
         />
 
-        <div className="sans p-1 flex flex-col font-semibold m-auto mt-20 rounded-xl container bg-slate-50 h-5/6 w-11/12 items-center	">
+        <div className="sans p-1 flex flex-col font-semibold m-auto mt-20 rounded-xl container bg-slate-50 h-5/6 w-11/12 items-center	z-0">
           <h1 className="mt-3 w-[96%] text-4xl text-cyan-600 border-b border-slate-300 p-2 w-11/12">
             {this.props.match.params.username}
           </h1>
-          <div className="w-[90%] self-start mt-3 ml-12 flex gap-x-7">
+          <div className="w-[90%] self-start mt-3 ml-12 flex gap-x-7 ">
             <button
               onClick={this.handlePopup}
               className="text-xl text-blue-700 inline"
             >
-              <MdAdd className="text-3xl text-blue-700 inline" />
+              <MdAdd className="text-3xl text-blue-700 inline " />
               Add
             </button>
             <SearchField
