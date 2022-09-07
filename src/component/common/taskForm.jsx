@@ -5,6 +5,7 @@ import Joi from "joi-browser";
 import TextArea from "./textArea";
 import "../../App.css";
 import { toast } from "react-toastify";
+import { findHashtags } from "../../utilies/findHashtags";
 class TaskForm extends Component {
   state = {
     data: {
@@ -13,6 +14,7 @@ class TaskForm extends Component {
       favorite: false,
       status: false,
       date: new Date().toString(),
+      tags: "",
     },
     errors: {},
   };
@@ -23,6 +25,7 @@ class TaskForm extends Component {
     favorite: Joi.any(),
     status: Joi.any(),
     date: Joi.any(),
+    tags: Joi.any(),
   };
 
   doSubmit = async () => {
@@ -35,6 +38,7 @@ class TaskForm extends Component {
       favorite: false,
       status: false,
       date: new Date().toString(),
+      tags: "",
     };
     this.setState({ data });
     toast.info("Task added!", {
@@ -81,6 +85,8 @@ class TaskForm extends Component {
     else delete errors[event.currentTarget.name];
     const data = { ...this.state.data };
     data[event.currentTarget.name] = event.currentTarget.value;
+    const tagss = findHashtags(this.state.data.description);
+    if (tagss) data.tags = [...tagss];
     this.setState({ data, errors });
   };
   render() {
