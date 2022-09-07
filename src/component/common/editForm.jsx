@@ -5,9 +5,17 @@ import Joi from "joi-browser";
 import TextArea from "./textArea";
 import "../../App.css";
 import { toast } from "react-toastify";
+import { findHashtags } from "../../utilies/findHashtags";
 class EditForm extends Component {
   state = {
-    data: { title: "", description: "", favorite: false, status: false },
+    data: {
+      title: "",
+      description: "",
+      favorite: false,
+      status: false,
+      date: new Date().toString(),
+      tags: "",
+    },
     errors: {},
     index: "",
   };
@@ -17,6 +25,8 @@ class EditForm extends Component {
     description: Joi.string().required().label("Description"),
     favorite: Joi.any(),
     status: Joi.any(),
+    date: Joi.any(),
+    tags: Joi.array(),
   };
 
   async componentDidMount() {
@@ -84,6 +94,8 @@ class EditForm extends Component {
     else delete errors[event.currentTarget.name];
     const data = { ...this.state.data };
     data[event.currentTarget.name] = event.currentTarget.value;
+    const newTags = findHashtags(this.state.data.description);
+    if (newTags) data.tags = [...newTags];
     this.setState({ data, errors });
   };
   render() {

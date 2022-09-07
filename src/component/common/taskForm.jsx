@@ -85,8 +85,8 @@ class TaskForm extends Component {
     else delete errors[event.currentTarget.name];
     const data = { ...this.state.data };
     data[event.currentTarget.name] = event.currentTarget.value;
-    const tagss = findHashtags(this.state.data.description);
-    if (tagss) data.tags = [...tagss];
+    const newTags = findHashtags(this.state.data.description);
+    if (newTags) data.tags = [...newTags];
     this.setState({ data, errors });
   };
   render() {
