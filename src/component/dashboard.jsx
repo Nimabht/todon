@@ -8,6 +8,7 @@ import { search } from "../utilies/searching";
 import { toast } from "react-toastify";
 import FilterButton from "./common/filter";
 import { getTags } from "../utilies/getTags";
+import { filter } from "../utilies/filtering";
 class DashBoard extends Component {
   state = {
     user: {
@@ -124,7 +125,7 @@ class DashBoard extends Component {
     const filtered =
       this.state.searchValue !== ""
         ? search(this.state.user.tasks, this.state.searchValue)
-        : this.state.user.tasks;
+        : filter(this.state.user.tasks, this.state.selectedTag);
 
     return { data: filtered };
   };
