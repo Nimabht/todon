@@ -14,8 +14,8 @@ class FilterButton extends Component {
         <ul
           className={
             this.state.flag
-              ? "visivle mr-2 bg-white 	rounded pl-3 pr-3 py-2	shadow-2xl	shadow-zinc-500		duration-150"
-              : "hidden bg-white 	rounded pl-3 pr-3 py-2	shadow-2xl	shadow-zinc-500		duration-150"
+              ? " list-none	visivle mr-2 bg-white 	rounded pl-3 pr-3 py-2	shadow-2xl	shadow-zinc-500		duration-150"
+              : "list-none	hidden bg-white 	rounded pl-3 pr-3 py-2	shadow-2xl	shadow-zinc-500		duration-150"
           }
         >
           {this.props.items.map((item) => (

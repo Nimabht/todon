@@ -30,9 +30,12 @@ class TaskForm extends Component {
 
   doSubmit = async () => {
     const user = { ...this.props.user };
-    user.tasks.unshift(this.state.data);
+    const data = { ...this.state.data };
+    const newTags = findHashtags(data.description);
+    if (newTags) data.tags = [...newTags];
+    user.tasks.unshift(data);
     axios.put(`http://localhost:3000/users/${user.id}`, user);
-    const data = {
+    const dData = {
       title: "",
       description: "",
       favorite: false,
@@ -40,7 +43,7 @@ class TaskForm extends Component {
       date: new Date().toString(),
       tags: "",
     };
-    this.setState({ data });
+    this.setState({ data: dData });
     toast.info("Task added!", {
       position: "top-center",
       autoClose: 5000,
@@ -85,8 +88,6 @@ class TaskForm extends Component {
     else delete errors[event.currentTarget.name];
     const data = { ...this.state.data };
     data[event.currentTarget.name] = event.currentTarget.value;
-    const newTags = findHashtags(this.state.data.description);
-    if (newTags) data.tags = [...newTags];
     this.setState({ data, errors });
   };
   render() {

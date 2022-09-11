@@ -7,6 +7,7 @@ import TaskForm from "./common/taskForm";
 import { search } from "../utilies/searching";
 import { toast } from "react-toastify";
 import FilterButton from "./common/filter";
+import { getTags } from "../utilies/getTags";
 class DashBoard extends Component {
   state = {
     user: {
@@ -14,21 +15,23 @@ class DashBoard extends Component {
       username: "",
       password: "",
       tasks: [],
-      tags: [],
     },
     searchValue: "",
     buttonPopup: false,
     popupPosition: "",
-    selevtedTag: "All",
+    selectedTag: "All",
+    tags: ["All", "Today"],
   };
 
   async componentDidMount() {
     const { data: users } = await axios.get("http://localhost:3000/users");
-    const user = users.find(
+    let user = users.find(
       (user) => user.username === this.props.match.params.username
     );
     if (user === undefined) this.props.history.push(`/error404`);
-    else this.setState({ user });
+    else {
+      this.setState({ user });
+    }
   }
   handleSearch = (e) => {
     let searchValue = this.state.searchValue;
@@ -130,6 +133,7 @@ class DashBoard extends Component {
   };
   render() {
     const { data: filtered } = this.getTaskData();
+
     return (
       <React.Fragment>
         <TaskForm
@@ -157,7 +161,7 @@ class DashBoard extends Component {
               onChange={this.handleSearch}
             />
             <FilterButton
-              items={this.state.user.tags}
+              items={["All", "Today", ...getTags(this.state.user.tasks)]}
               selectedTag={this.state.selectedTag}
               onItemSelect={this.handleTagSelect}
             />

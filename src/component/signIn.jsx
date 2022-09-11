@@ -34,7 +34,6 @@ class SignIn extends Component {
     const newAcc = {
       ...this.state.data,
       tasks: [],
-      tags: ["All", "Favorite", "Today"],
     };
     await axios.post("http://localhost:3000/users", newAcc);
     console.log("signin submitted");
