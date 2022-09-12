@@ -5,10 +5,10 @@ class TaskTable extends Component {
   state = {};
   render() {
     return (
-      <div className="scroll flex flex-col gap-y-1 overflow-auto h-full w-[96%] mt-5 ml-9">
+      <div className="scroll flex flex-col gap-y-1 overflow-auto h-full w-[96%] mt-5 ml-9 ">
         {this.props.tasks.map((task) => (
           <Task
-            id={this.props.id}
+            username={this.props.username}
             onPopup={() => this.props.onPopup(task)}
             task={task}
             key={task.title}

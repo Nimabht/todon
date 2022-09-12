@@ -171,7 +171,7 @@ class DashBoard extends Component {
             <h1 className="text-6xl text-gray-400 p-[11rem]">Add new Task !</h1>
           )}
           <TaskTable
-            id={this.state.user.id}
+            username={this.state.user.username}
             onStatus={this.handleStatusChange}
             onFavorite={this.handleFavoriteChange}
             onDelete={this.handleDelete}

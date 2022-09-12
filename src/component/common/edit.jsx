@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const EditButton = (props) => {
   return (
     <Link
-      to={`/dashboard/admin/${props.task.title}`}
+      to={`/dashboard/${props.username}/${props.task.title}`}
       className="font-thin	h-fit text-sky-500 text-4xl hover:drop-shadow-edit mr-2"
     >
       <AiOutlineEdit />

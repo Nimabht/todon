@@ -36,7 +36,7 @@ class Task extends Component {
               favorite={this.props.task.favorite}
               onClick={() => this.props.onFavorite(this.props.task)}
             />
-            <EditButton task={this.props.task} id={this.props.id} />
+            <EditButton task={this.props.task} username={this.props.username} />
           </span>
         </div>
       </div>

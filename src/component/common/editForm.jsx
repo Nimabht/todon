@@ -38,6 +38,7 @@ class EditForm extends Component {
       (task) => task.title === this.props.match.params.title
     );
     const index = user.tasks.indexOf(task);
+    console.log(task);
     this.setState({ data: task, index });
   }
 
