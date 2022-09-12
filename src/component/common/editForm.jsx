@@ -43,12 +43,14 @@ class EditForm extends Component {
   }
 
   doSubmit = async () => {
+    const data = { ...this.state.data };
+    const newTags = findHashtags(data.description);
+    if (newTags) data.tags = [...newTags];
     const { data: users } = await axios.get("http://localhost:3000/users");
     const user = users.find(
       (user) => user.username === this.props.match.params.username
     );
-    user.tasks[this.state.index] = this.state.data;
-    console.log(user);
+    user.tasks[this.state.index] = data;
     await axios.put(`http://localhost:3000/users/${user.id}`, user);
     console.log("task edited");
     this.props.history.push(`/dashboard/${this.props.match.params.username}`);

@@ -6,47 +6,6 @@
       "password": "admin",
       "tasks": [
         {
-          "title": "gym1",
-          "description": "gym1 #gym",
-          "favorite": false,
-          "status": false,
-          "date": "Sun Sep 11 2022 22:48:47 GMT+0430 (Iran Daylight Time)",
-          "tags": [
-            "#gym"
-          ]
-        },
-        {
-          "title": "gym2",
-          "description": "gym2 #gym",
-          "favorite": false,
-          "status": false,
-          "date": "Sun Sep 11 2022 22:48:26 GMT+0430 (Iran Daylight Time)",
-          "tags": [
-            "#gym"
-          ]
-        },
-        {
-          "title": "sads",
-          "description": "dassadasd #dawsh",
-          "favorite": false,
-          "status": false,
-          "date": "Sun Sep 11 2022 22:13:23 GMT+0430 (Iran Daylight Time)",
-          "tags": [
-            "#dawsh"
-          ]
-        },
-        {
-          "title": "ijygufh",
-          "description": "sadiuyg #aha #mame",
-          "favorite": false,
-          "status": false,
-          "date": "Sun Sep 11 2022 21:19:56 GMT+0430 (Iran Daylight Time)",
-          "tags": [
-            "#aha",
-            "#mame"
-          ]
-        },
-        {
           "title": "title 3",
           "description": "des 2",
           "favorite": false,
@@ -121,18 +80,7 @@
     {
       "username": "test",
       "password": "test1234",
-      "tasks": [
-        {
-          "title": "salam dada2",
-          "description": "first task #uni",
-          "favorite": false,
-          "status": false,
-          "date": "Mon Sep 12 2022 16:22:34 GMT+0430 (Iran Daylight Time)",
-          "tags": [
-            "#uni"
-          ]
-        }
-      ],
+      "tasks": [],
       "id": 3
     }
   ]
