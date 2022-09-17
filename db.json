@@ -6,22 +6,6 @@
       "password": "admin",
       "tasks": [
         {
-          "title": "gym3",
-          "description": "sajkdl",
-          "favorite": false,
-          "status": false,
-          "date": "Sat Sep 17 2022 22:26:47 GMT+0430 (Iran Daylight Time)",
-          "tags": ""
-        },
-        {
-          "title": "gym",
-          "description": "sdajoioo",
-          "favorite": false,
-          "status": false,
-          "date": "Sat Sep 17 2022 22:19:09 GMT+0430 (Iran Daylight Time)",
-          "tags": ""
-        },
-        {
           "title": "title 3",
           "description": "des 2 #gyym",
           "favorite": false,

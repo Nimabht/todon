@@ -7,6 +7,11 @@ export function filter(items, current) {
       if (d.slice(0, 16) === item.date.slice(0, 16)) return true;
       else return false;
     });
+  if (current === "Favorites") {
+    return items.filter((item) => {
+      return item.favorite;
+    });
+  }
   let result = [];
   for (const item of items) {
     if (item.tags) {

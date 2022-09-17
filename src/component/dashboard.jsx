@@ -162,7 +162,12 @@ class DashBoard extends Component {
               onChange={this.handleSearch}
             />
             <FilterButton
-              items={["All", "Today", ...getTags(this.state.user.tasks)]}
+              items={[
+                "All",
+                "Today",
+                "Favorites",
+                ...getTags(this.state.user.tasks),
+              ]}
               selectedTag={this.state.selectedTag}
               onItemSelect={this.handleTagSelect}
             />
