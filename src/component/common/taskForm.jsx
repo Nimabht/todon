@@ -6,6 +6,7 @@ import TextArea from "./textArea";
 import "../../App.css";
 import { toast } from "react-toastify";
 import { findHashtags } from "../../utilies/findHashtags";
+
 class TaskForm extends Component {
   state = {
     data: {
@@ -33,6 +34,23 @@ class TaskForm extends Component {
     const data = { ...this.state.data };
     const newTags = findHashtags(data.description);
     if (newTags) data.tags = [...newTags];
+    if (
+      user.tasks.find((t) => {
+        return t.title === data.title;
+      })
+    ) {
+      toast.info("Task already existing!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
+
     user.tasks.unshift(data);
     axios.put(`http://localhost:3000/users/${user.id}`, user);
     const dData = {
