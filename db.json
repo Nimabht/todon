@@ -6,16 +6,6 @@
       "password": "admin",
       "tasks": [
         {
-          "title": "title 3",
-          "description": "des 2 #gyym",
-          "favorite": false,
-          "status": false,
-          "date": "Thu Sep 01 2022 12:55:18 GMT+0430 (Iran Daylight Time)",
-          "tags": [
-            "#gyym"
-          ]
-        },
-        {
           "title": "title 4",
           "description": "des 2",
           "favorite": false,
@@ -43,48 +33,8 @@
           "status": false,
           "date": "Thu Sep 01 2022 12:55:18 GMT+0430 (Iran Daylight Time)"
         }
-      ]
-    },
-    {
-      "username": "kuni",
-      "password": "kuni1234",
-      "tasks": [
-        {
-          "title": "asdhuujk",
-          "description": "sahhudjoi #mame",
-          "favorite": false,
-          "status": false,
-          "date": "Sun Sep 11 2022 21:50:12 GMT+0430 (Iran Daylight Time)",
-          "tags": [
-            "#mame"
-          ]
-        },
-        {
-          "title": "uni",
-          "description": "kune latife bzarim",
-          "favorite": false,
-          "status": false,
-          "date": "Sun Sep 11 2022 21:49:46 GMT+0430 (Iran Daylight Time)",
-          "tags": ""
-        },
-        {
-          "title": "uni",
-          "description": "kune teymoori ri bzaram #uni",
-          "favorite": true,
-          "status": false,
-          "date": "Sun Sep 11 2022 21:48:51 GMT+0430 (Iran Daylight Time)",
-          "tags": [
-            "#uni"
-          ]
-        }
       ],
-      "id": 2
-    },
-    {
-      "username": "test",
-      "password": "test1234",
-      "tasks": [],
-      "id": 3
+      "taskSlot": 10
     }
   ]
 }

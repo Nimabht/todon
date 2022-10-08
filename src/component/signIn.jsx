@@ -4,12 +4,16 @@ import Input from "./common/input";
 import axios from "axios";
 import { toast } from "react-toastify";
 class SignIn extends Component {
-  state = { data: { username: "", password: "", tasks: "" }, errors: {} };
+  state = {
+    data: { username: "", password: "", tasks: "", taskSlot: 10 },
+    errors: {},
+  };
 
   schema = {
     username: Joi.string().min(4).max(30).required().label("Username"),
     password: Joi.string().required().min(8).label("Password"),
     tasks: Joi.any(),
+    taskSlot: Joi.number(),
   };
   validateProperty = (input) => {
     const obj = { [input.name]: input.value };

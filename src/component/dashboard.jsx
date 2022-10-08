@@ -16,6 +16,7 @@ class DashBoard extends Component {
       username: "",
       password: "",
       tasks: [],
+      taskSlot: "",
     },
     searchValue: "",
     buttonPopup: false,
@@ -146,9 +147,13 @@ class DashBoard extends Component {
         />
 
         <div className="sans p-1 flex flex-col font-semibold m-auto mt-20 rounded-xl container bg-slate-50 h-5/6 w-11/12 items-center	z-0">
-          <h1 className="mt-3 w-[96%] text-4xl text-cyan-600 border-b border-slate-300 p-2 w-11/12">
-            {this.props.match.params.username}
-          </h1>
+          <div className="flex">
+            <h1 className="mt-3 w-[96%] text-4xl text-cyan-600 border-b border-slate-300 p-2 w-11/12">
+              {this.props.match.params.username}
+            </h1>
+            <p>{this.state.user.taskSlot}</p>
+          </div>
+
           <div className="w-[90%] self-start mt-3 ml-12 flex gap-x-7 ">
             <button
               onClick={this.handlePopup}
